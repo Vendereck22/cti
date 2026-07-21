@@ -59,7 +59,7 @@ export function AgencyLocatorSection({ content }: AgencyLocatorSectionProps) {
   }
 
   return (
-    <LandingSection id="agences">
+    <LandingSection id="agences" tone="muted">
       <div className="space-y-10">
         <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
           <SectionHeader content={content} />
@@ -71,7 +71,7 @@ export function AgencyLocatorSection({ content }: AgencyLocatorSectionProps) {
           </Badge>
         </div>
 
-        <div className="rounded-lg border border-border bg-muted/40 p-4 shadow-sm sm:p-5">
+        <div className="rounded-lg border border-cti-gold/25 bg-white p-4 shadow-sm shadow-cti-gold/10 sm:p-5">
           <div className="relative">
             <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
             <Input
@@ -94,7 +94,7 @@ export function AgencyLocatorSection({ content }: AgencyLocatorSectionProps) {
                 />
               ))
             ) : (
-              <div className="rounded-lg border border-dashed border-border bg-background p-5 text-sm text-muted-foreground md:col-span-2 xl:col-span-3">
+              <div className="rounded-lg border border-dashed border-cti-gold/40 bg-white p-5 text-sm text-muted-foreground md:col-span-2 xl:col-span-3">
                 {content.emptyState}
               </div>
             )}
@@ -126,8 +126,8 @@ function AgencyCard({
   return (
     <Card
       className={cn(
-        "rounded-lg border-border shadow-none transition-colors hover:border-primary/25",
-        isSelected && "border-primary/40 bg-secondary"
+        "rounded-lg border-cti-gold/25 bg-white shadow-none transition-colors hover:border-primary/35",
+        isSelected && "border-primary/40 bg-cti-gold/15"
       )}
     >
       <CardHeader className="gap-2">
@@ -163,7 +163,7 @@ function AgencyCard({
           <span>{agency.phone}</span>
         </p>
       </CardContent>
-      <CardFooter className="border-t border-border bg-muted/30">
+      <CardFooter className="border-t border-cti-gold/20 bg-cti-gold/10">
         <Button
           type="button"
           variant={isSelected ? "default" : "outline"}
@@ -200,7 +200,7 @@ function AgencyMapPanel({
   return (
     <div id="carte-agences" className="scroll-mt-24">
       <div className="grid gap-5 lg:grid-cols-[0.72fr_1.28fr] lg:items-stretch">
-        <Card className="rounded-lg border-border shadow-none">
+        <Card className="rounded-lg border-cti-gold/25 bg-white shadow-none">
           <CardHeader>
             <Badge
               variant="outline"
@@ -230,7 +230,7 @@ function AgencyMapPanel({
                     "h-auto justify-start rounded-lg px-4 py-3 text-left",
                     isSelected
                       ? "bg-primary text-primary-foreground"
-                      : "border-border bg-background text-foreground hover:bg-muted"
+                      : "border-cti-gold/25 bg-white text-foreground hover:bg-cti-gold/10"
                   )}
                 >
                   <span className="grid gap-1">
@@ -250,20 +250,20 @@ function AgencyMapPanel({
           </CardContent>
         </Card>
 
-        <Card className="overflow-hidden rounded-lg border-primary/15 shadow-xl shadow-primary/10">
-          <CardHeader className="gap-4 border-b border-border bg-primary text-primary-foreground">
+        <Card className="overflow-hidden rounded-lg border-primary/20 shadow-xl shadow-primary/10">
+          <CardHeader className="gap-4 border-b border-primary/10 bg-cti-gold text-foreground">
             <div className="flex flex-wrap items-start justify-between gap-4">
               <div className="space-y-1">
                 <Badge
                   variant="outline"
-                  className="rounded-md border-white/20 bg-white/10 text-cti-gold"
+                  className="rounded-md border-primary/20 bg-white text-primary"
                 >
                   {content.mapTitle}
                 </Badge>
                 <CardTitle className="text-xl font-semibold">
                   {selectedAgency?.name ?? content.mapTitle}
                 </CardTitle>
-                <CardDescription className="text-blue-50">
+                <CardDescription className="text-muted-foreground">
                   {selectedAgency
                     ? `${selectedAgency.city}, ${selectedAgency.country}`
                     : content.mapDescription}
@@ -271,7 +271,7 @@ function AgencyMapPanel({
               </div>
               <Badge
                 variant="outline"
-                className="rounded-md border-white/20 bg-white/10 text-white"
+                className="rounded-md border-primary/20 bg-white text-primary"
               >
                 {agencies.length}{" "}
                 {agencies.length > 1
@@ -296,7 +296,7 @@ function AgencyMapPanel({
             )}
 
             {selectedAgency ? (
-              <div className="grid gap-3 rounded-lg border border-border bg-muted/40 p-4 text-sm text-muted-foreground sm:grid-cols-2">
+              <div className="grid gap-3 rounded-lg border border-cti-gold/25 bg-white p-4 text-sm text-muted-foreground sm:grid-cols-2">
                 <p className="flex gap-2">
                   <MapPin className="mt-0.5 size-4 shrink-0 text-cti-blue" />
                   <span>{selectedAgency.address}</span>
@@ -312,7 +312,7 @@ function AgencyMapPanel({
               </div>
             ) : null}
           </CardContent>
-          <CardFooter className="justify-between border-t border-border bg-muted/30">
+          <CardFooter className="justify-between border-t border-cti-gold/20 bg-white">
             <span className="text-xs text-muted-foreground">
               {content.agencies.length} {content.networkLabel}
             </span>

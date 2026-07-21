@@ -10,6 +10,8 @@ export const landingContent = {
     companyName: "CTI RDC",
     logoLabel: "CTI",
     logoDescription: "Transfert d'argent",
+    contactPhone: "+243 000 000 001",
+    contactEmail: "contact@cti.example",
     mobileMenuLabel: "Ouvrir la navigation",
     navigation: [
       { label: "Accueil", href: "/" },
@@ -18,15 +20,20 @@ export const landingContent = {
       { label: "Aide", href: "/aide" },
       { label: "Contact", href: "/contacts" },
     ],
+    socialLinks: [
+      { label: "Facebook", icon: "facebook", shortLabel: "Fb", href: "#" },
+      { label: "Instagram", icon: "instagram", shortLabel: "Ig", href: "#" },
+      { label: "LinkedIn", icon: "linkedin", shortLabel: "In", href: "#" },
+    ],
     primaryCta: { label: "Simuler", href: "/#simulateur" },
     secondaryCta: { label: "Trouver une agence", href: "/#agences" },
   },
   hero: {
     eyebrow: "CTI RDC",
-    title: "Envoyez et recevez de l'argent avec CTI, simplement et en confiance.",
+    title: "Envoyez de l'argent avec CTI, simplement et en toute confiance.",
     description:
-      "Simulez votre transfert, estimez les frais et retrouvez l'agence CTI la plus proche avant de vous presenter au guichet.",
-    primaryCta: { label: "Simuler un envoi", href: "/#simulateur" },
+      "Préparez votre transfert vers vos proches en quelques instants. Simulez le montant, vérifiez les frais indicatifs et retrouvez l'agence CTI la plus proche.",
+    primaryCta: { label: "Envoyer vers", href: "/#simulateur" },
     secondaryCta: { label: "Trouver une agence", href: "/#agences" },
     metrics: [
       { value: "RDC + Belgique", label: "Points de service cibles" },
@@ -34,8 +41,8 @@ export const landingContent = {
       { value: "AML/KYC", label: "Controle d'identite" },
     ],
     visual: {
-      src: "https://images.unsplash.com/photo-1556745757-8d76bdb6984b?auto=format&fit=crop&q=80&w=1400",
-      alt: "Client au guichet lors d'un paiement par carte, image illustrative CTI",
+      src: "/images/landing/hero-cti-customer.jpg",
+      alt: "Cliente CTI souriante consultant son téléphone, image illustrative originale",
       eyebrow: "Service en agence",
       title: "Un accompagnement humain au guichet.",
       description:
@@ -64,10 +71,49 @@ export const landingContent = {
     initialSourceCurrency: "EUR",
     initialTargetCurrency: "CDF",
     initialDestinationId: "kinshasa-gombe",
+    initialCountryCode: "cd",
+    countries: [
+      {
+        code: "cd",
+        label: "RDC",
+        flag: "🇨🇩",
+        description: "Kinshasa, agences CTI et points de retrait.",
+      },
+      {
+        code: "be",
+        label: "Belgique",
+        flag: "🇧🇪",
+        description: "Liège et Bruxelles pour les transferts vers l'Europe.",
+      },
+      {
+        code: "fr",
+        label: "France",
+        flag: "🇫🇷",
+        description: "Parcours indicatif pour les clients en Europe.",
+      },
+      {
+        code: "cg",
+        label: "Congo-Brazzaville",
+        flag: "🇨🇬",
+        description: "Envois et retraits à préparer avec l'équipe CTI.",
+      },
+      {
+        code: "ao",
+        label: "Angola",
+        flag: "🇦🇴",
+        description: "Destination régionale à confirmer en agence.",
+      },
+      {
+        code: "cm",
+        label: "Cameroun",
+        flag: "🇨🇲",
+        description: "Informations indicatives avant validation au guichet.",
+      },
+    ],
     currencies: [
-      { code: "EUR", label: "EUR - Euro" },
-      { code: "USD", label: "USD - Dollar US" },
-      { code: "CDF", label: "CDF - Franc congolais" },
+      { code: "EUR", label: "EUR - Euro", flag: "🇪🇺" },
+      { code: "USD", label: "USD - Dollar US", flag: "🇺🇸" },
+      { code: "CDF", label: "CDF - Franc congolais", flag: "🇨🇩" },
     ],
     destinations: [
       {
@@ -75,18 +121,21 @@ export const landingContent = {
         label: "Kinshasa, Gombe",
         country: "RDC",
         city: "Kinshasa",
+        flag: "🇨🇩",
       },
       {
         id: "kinshasa-limete",
         label: "Kinshasa, Limete",
         country: "RDC",
         city: "Kinshasa",
+        flag: "🇨🇩",
       },
       {
         id: "bruxelles",
         label: "Bruxelles",
         country: "Belgique",
         city: "Bruxelles",
+        flag: "🇧🇪",
       },
     ],
     rates: [
@@ -113,6 +162,73 @@ export const landingContent = {
         fixedFee: 4,
         percentageFee: 0.015,
         updatedAtLabel: "Indicatif au guichet",
+      },
+    ],
+  },
+  transferMethods: {
+    title: "Moyens pratiques de transférer de l'argent",
+    tabsLabel: "Choisir un parcours de transfert",
+    defaultGroupId: "send",
+    groups: [
+      {
+        id: "receive",
+        label: "Recevoir de l'argent",
+        cards: [
+          {
+            title: "Retrait d'espèces",
+            description:
+              "Le bénéficiaire se présente dans une agence CTI avec son code unique et une pièce d'identité valide pour retirer les fonds.",
+            icon: "agency",
+            actionLabel: "Trouver une agence",
+            href: "/#agences",
+          },
+          {
+            title: "Code unique de retrait",
+            description:
+              "Chaque opération est associée à un code de transfert qui facilite la vérification au guichet et le suivi avec l'équipe CTI.",
+            icon: "lock",
+            actionLabel: "Voir l'aide",
+            href: "/aide",
+          },
+          {
+            title: "Accompagnement au guichet",
+            description:
+              "Nos conseillers expliquent les frais, les délais et les informations utiles avant la confirmation finale de l'opération.",
+            icon: "wallet",
+            actionLabel: "Contacter CTI",
+            href: "/contacts",
+          },
+        ],
+      },
+      {
+        id: "send",
+        label: "Envoyer de l'argent",
+        cards: [
+          {
+            title: "Envoyer de l'argent en ligne",
+            description:
+              "Préparez votre envoi avec le simulateur CTI : montant, devise, frais indicatifs et agence la plus pratique avant le passage au guichet.",
+            icon: "laptop",
+            actionLabel: "Simuler un envoi",
+            href: "/#simulateur",
+          },
+          {
+            title: "Envoyer avec l'assistance CTI",
+            description:
+              "Démarrez votre parcours avec les informations essentielles, puis laissez nos conseillers vérifier les pièces et confirmer les frais.",
+            icon: "mobile",
+            actionLabel: "En savoir plus",
+            href: "/aide",
+          },
+          {
+            title: "Envoyer de l'argent en personne",
+            description:
+              "Rendez-vous dans une agence CTI pour transférer les fonds, confirmer l'identité et obtenir le code unique de retrait.",
+            icon: "store",
+            actionLabel: "Rechercher des agences",
+            href: "/agences",
+          },
+        ],
       },
     ],
   },
@@ -174,48 +290,121 @@ export const landingContent = {
   },
   services: {
     eyebrow: "Services CTI",
-    title: "Les actions essentielles des le premier ecran.",
+    title: "Des services CTI conçus pour vos opérations du quotidien.",
     description:
-      "La page oriente rapidement vers les besoins les plus frequents des clients CTI.",
-    actionLabel: "Continuer",
+      "Transfert d'argent, opérations mobiles et envois de colis : CTI accompagne les clients avec des solutions simples, lisibles et proches du terrain.",
+    actionLabel: "En savoir plus",
     cards: [
       {
-        title: "Envoyer de l'argent",
-        description: "Preparez votre passage en agence avec une estimation claire.",
+        title: "Transfert de fonds vers l'Europe",
+        description:
+          "Envoyez des fonds vers les points CTI en Europe, notamment Liège et Bruxelles, avec un suivi clair jusqu'à la confirmation.",
         icon: "send",
         href: "/#simulateur",
       },
       {
-        title: "Recevoir un transfert",
-        description: "Retrouvez les informations utiles pour retirer avec votre code.",
-        icon: "wallet",
-        href: "/#faq",
+        title: "Opérations mobiles",
+        description:
+          "Facilitez vos opérations via les réseaux mobiles courants : M-Pesa, Orange Money et Airtel selon les disponibilités locales.",
+        icon: "mobile",
+        href: "/contacts",
       },
       {
-        title: "Suivre un transfert",
-        description: "Gardez le code unique comme repere pour demander l'etat d'une operation.",
-        icon: "search",
+        title: "Service Western Union",
+        description:
+          "Bénéficiez d'un accompagnement CTI pour les transferts Western Union, les pièces à présenter et les informations de retrait.",
+        icon: "money",
         href: "/aide",
       },
       {
-        title: "Consulter les taux",
-        description: "Comprenez les taux indicatifs et les frais avant validation.",
-        icon: "money",
-        href: "/#taux",
-      },
-      {
-        title: "Localiser une agence",
-        description: "Filtrez les agences CTI par ville ou par pays.",
-        icon: "map",
+        title: "Transfert de colis",
+        description:
+          "Préparez l'envoi et la réception de colis avec les informations utiles sur les agences, les contacts et le suivi.",
+        icon: "package",
         href: "/#agences",
       },
     ],
+  },
+  clientTransfers: {
+    eyebrow: "Parcours clients",
+    title: "Nos clients ont effectué des transferts",
+    description:
+      "Chaque opération raconte un besoin concret : soutenir une famille, envoyer un montant vers l'Europe, retirer en agence ou préparer un service mobile avec un conseiller CTI.",
+    highlights: [
+      {
+        value: "Europe",
+        label: "Liège et Bruxelles comme destinations clés.",
+      },
+      {
+        value: "Mobile money",
+        label: "M-Pesa, Orange Money et Airtel selon disponibilité.",
+      },
+      {
+        value: "Agence CTI",
+        label: "Un accompagnement humain avant validation.",
+      },
+    ],
+    paragraphs: [
+      "Les clients utilisent CTI pour préparer des transferts clairs, avec une estimation lisible et une confirmation finale au guichet. Le parcours reste simple : comprendre le montant, vérifier les frais, puis finaliser avec les informations nécessaires.",
+      "Pour les transferts vers l'Europe, CTI met l'accent sur les villes de Liège et Bruxelles afin d'offrir un repère concret aux familles et aux proches qui souhaitent recevoir ou suivre une opération.",
+      "Les services mobiles et les transferts de colis complètent l'expérience : le client peut être orienté vers M-Pesa, Orange Money, Airtel ou vers une agence selon le service dont il a besoin.",
+    ],
+  },
+  mobileExperience: {
+    eyebrow: "Expérience mobile CTI",
+    title: "Vos transferts d'argent simplifiés avec CTI",
+    description:
+      "Préparez vos opérations, consultez les informations utiles et gardez un repère clair avant de finaliser votre transfert avec l'équipe CTI.",
+    visual: {
+      src: "/images/landing/mobile-cti-phone.png",
+      alt: "Main touchant un téléphone affichant le logo CTI, visuel illustratif",
+      logoSrc: "/images/logo/logo-cti-cropped.png",
+      logoAlt: "Logo CTI Congo Trans",
+    },
+    features: [
+      {
+        title: "Préparez votre envoi où que vous soyez.",
+        icon: "send",
+      },
+      {
+        title:
+          "Recevez les informations utiles sur les frais et les taux indicatifs.",
+        icon: "bell",
+      },
+      {
+        title: "Suivez votre transfert avec votre code unique.",
+        icon: "search",
+      },
+      {
+        title: "Gagnez du temps pour vos opérations régulières.",
+        icon: "refresh",
+      },
+    ],
+    primaryCta: { label: "En savoir plus", href: "/aide" },
+    note: "Visuel illustratif de l'expérience mobile CTI.",
   },
   whyChoose: {
     eyebrow: "Pourquoi nous choisir",
     title: "Une solution de transfert pensée pour la confiance et la proximité.",
     description:
       "CTI combine un accompagnement humain, des agences physiques et des contrôles clairs pour rendre chaque opération plus lisible avant le passage au guichet.",
+    highlights: [
+      {
+        value: "Agences identifiées",
+        label: "Des points CTI physiques pour orienter et rassurer les clients.",
+        icon: "agency",
+      },
+      {
+        value: "Code unique",
+        label: "Un repère simple pour le retrait, le suivi et les échanges.",
+        icon: "lock",
+      },
+      {
+        value: "Contrôle clair",
+        label: "Des vérifications d'identité et de conformité à chaque étape.",
+        icon: "shield",
+      },
+    ],
     points: [
       {
         title: "Un réseau d'agences réel",

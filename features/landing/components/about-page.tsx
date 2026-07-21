@@ -76,13 +76,13 @@ export function AboutPage({ content }: { content: PublicInfoPageContent }) {
           )}
 
           {(content.primaryCta || content.secondaryCta) && (
-            <Card className="rounded-lg border-primary bg-primary text-primary-foreground shadow-xl shadow-primary/10">
+            <Card className="rounded-lg border-primary/15 bg-cti-gold text-foreground shadow-xl shadow-cti-gold/20">
               <CardContent className="grid gap-5 p-5 sm:p-6 lg:grid-cols-[1fr_auto] lg:items-center">
                 <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.14em] text-cti-gold">
+                  <p className="text-sm font-semibold uppercase tracking-[0.14em] text-primary">
                     Continuer avec CTI
                   </p>
-                  <p className="mt-2 max-w-2xl text-sm leading-6 text-blue-50">
+                  <p className="mt-2 max-w-2xl text-sm leading-6 text-foreground/75">
                     Retrouvez une agence proche ou contactez notre equipe CTI pour
                     preparer votre prochaine operation.
                   </p>
@@ -93,7 +93,7 @@ export function AboutPage({ content }: { content: PublicInfoPageContent }) {
                       href={content.primaryCta.href}
                       className={cn(
                         buttonVariants({ size: "lg" }),
-                        "h-11 rounded-lg bg-cti-gold px-5 text-sm font-semibold text-primary hover:bg-[#e0a900]"
+                        "h-11 rounded-lg bg-primary px-5 text-sm font-semibold text-white hover:bg-primary/90"
                       )}
                     >
                       {content.primaryCta.label}
@@ -105,7 +105,7 @@ export function AboutPage({ content }: { content: PublicInfoPageContent }) {
                       href={content.secondaryCta.href}
                       className={cn(
                         buttonVariants({ size: "lg", variant: "outline" }),
-                        "h-11 rounded-lg border-white/25 bg-white/5 px-5 text-sm font-semibold text-white hover:bg-white/10 hover:text-white"
+                        "h-11 rounded-lg border-primary/25 bg-white px-5 text-sm font-semibold text-primary hover:bg-primary hover:text-white"
                       )}
                     >
                       {content.secondaryCta.label}
@@ -178,7 +178,7 @@ function ImageShowcase({
     <section
       className={cn(
         "space-y-8 border-t border-border pt-10",
-        tone === "muted" && "bg-muted/35 px-4 py-10 sm:px-6 lg:px-8"
+        tone === "muted" && "bg-white px-4 py-10 sm:px-6 lg:px-8"
       )}
     >
       <div className="mx-auto max-w-3xl space-y-3 text-center">

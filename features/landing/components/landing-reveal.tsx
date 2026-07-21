@@ -8,7 +8,7 @@ export function LandingReveal({ children }: { children: ReactNode }) {
 
   return (
     <motion.div
-      initial={shouldReduceMotion ? false : { opacity: 0, y: 18 }}
+      initial={false}
       whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
       transition={{ duration: 0.22, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.02 }}

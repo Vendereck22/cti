@@ -67,9 +67,9 @@ export function PublicInfoPage({ content }: { content: PublicInfoPageContent }) 
           </div>
 
           {(content.primaryCta || content.secondaryCta) && (
-            <Card className="rounded-lg border-primary/20 bg-primary text-primary-foreground shadow-xl shadow-primary/10">
+            <Card className="rounded-lg border-primary/15 bg-cti-gold text-foreground shadow-xl shadow-cti-gold/20">
               <CardContent className="flex flex-col gap-3 p-5 sm:flex-row sm:items-center sm:justify-between">
-                <p className="text-sm leading-6 text-blue-50">
+                <p className="text-sm leading-6 text-foreground/75">
                   {content.description}
                 </p>
                 <div className="flex flex-col gap-3 sm:flex-row">
@@ -78,7 +78,7 @@ export function PublicInfoPage({ content }: { content: PublicInfoPageContent }) 
                       href={content.primaryCta.href}
                       className={cn(
                         buttonVariants({ size: "lg" }),
-                        "h-11 rounded-lg bg-cti-gold px-5 text-sm font-semibold text-primary hover:bg-[#e0a900]"
+                        "h-11 rounded-lg bg-primary px-5 text-sm font-semibold text-white hover:bg-primary/90"
                       )}
                     >
                       {content.primaryCta.label}
@@ -90,7 +90,7 @@ export function PublicInfoPage({ content }: { content: PublicInfoPageContent }) 
                       href={content.secondaryCta.href}
                       className={cn(
                         buttonVariants({ size: "lg", variant: "outline" }),
-                        "h-11 rounded-lg border-white/25 bg-white/5 px-5 text-sm font-semibold text-white hover:bg-white/10 hover:text-white"
+                        "h-11 rounded-lg border-primary/25 bg-white px-5 text-sm font-semibold text-primary hover:bg-primary hover:text-white"
                       )}
                     >
                       {content.secondaryCta.label}

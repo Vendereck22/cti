@@ -4,12 +4,16 @@ export type LandingIconName =
   | "check"
   | "clock"
   | "lock"
+  | "laptop"
   | "map"
+  | "mobile"
   | "money"
+  | "package"
   | "phone"
   | "search"
   | "shield"
   | "send"
+  | "store"
   | "wallet";
 
 export interface LandingSeoContent {
@@ -22,12 +26,20 @@ export interface LandingLink {
   href: string;
 }
 
+export type SocialIconName = "facebook" | "instagram" | "linkedin";
+
 export interface LandingHeaderContent {
   companyName: string;
   logoLabel: string;
   logoDescription: string;
+  contactPhone: string;
+  contactEmail: string;
   mobileMenuLabel: string;
   navigation: LandingLink[];
+  socialLinks: (LandingLink & {
+    icon: SocialIconName;
+    shortLabel: string;
+  })[];
   primaryCta: LandingLink;
   secondaryCta: LandingLink;
 }
@@ -58,6 +70,14 @@ export interface LandingHeroContent {
 export interface CurrencyOption {
   code: string;
   label: string;
+  flag: string;
+}
+
+export interface CountryOption {
+  code: string;
+  label: string;
+  flag: string;
+  description: string;
 }
 
 export interface DestinationOption {
@@ -65,6 +85,7 @@ export interface DestinationOption {
   label: string;
   country: string;
   city: string;
+  flag: string;
 }
 
 export interface CurrencyRate {
@@ -110,6 +131,8 @@ export interface RateEstimatorContent {
   initialSourceCurrency: string;
   initialTargetCurrency: string;
   initialDestinationId: string;
+  initialCountryCode: string;
+  countries: CountryOption[];
   currencies: CurrencyOption[];
   destinations: DestinationOption[];
   rates: CurrencyRate[];
@@ -119,6 +142,27 @@ export interface TrustProof {
   title: string;
   description: string;
   icon: LandingIconName;
+}
+
+export type TransferMethodGroupId = "receive" | "send";
+
+export interface TransferMethodCard {
+  title: string;
+  description: string;
+  icon: LandingIconName;
+  actionLabel: string;
+  href: string;
+}
+
+export interface TransferMethodsContent {
+  title: string;
+  tabsLabel: string;
+  defaultGroupId: TransferMethodGroupId;
+  groups: {
+    id: TransferMethodGroupId;
+    label: string;
+    cards: TransferMethodCard[];
+  }[];
 }
 
 export interface ProcessStep {
@@ -145,11 +189,39 @@ export interface RateInfoContent extends LandingSectionContent {
   points: string[];
 }
 
+export interface ClientTransfersContent extends LandingSectionContent {
+  highlights: {
+    value: string;
+    label: string;
+  }[];
+  paragraphs: string[];
+}
+
+export type MobileExperienceIconName = "send" | "bell" | "search" | "refresh";
+
+export interface MobileExperienceContent extends LandingSectionContent {
+  visual: LandingImageContent & {
+    logoSrc: string;
+    logoAlt: string;
+  };
+  features: {
+    title: string;
+    icon: MobileExperienceIconName;
+  }[];
+  primaryCta: LandingLink;
+  note: string;
+}
+
 export interface SecurityContent extends LandingSectionContent {
   points: TrustProof[];
 }
 
 export interface WhyChooseContent extends LandingSectionContent {
+  highlights: {
+    value: string;
+    label: string;
+    icon: LandingIconName;
+  }[];
   points: {
     title: string;
     description: string;
@@ -260,6 +332,7 @@ export interface PublicLandingContent {
   header: LandingHeaderContent;
   hero: LandingHeroContent;
   estimator: RateEstimatorContent;
+  transferMethods: TransferMethodsContent;
   trust: TrustProof[];
   process: LandingSectionContent & {
     steps: ProcessStep[];
@@ -268,6 +341,8 @@ export interface PublicLandingContent {
     actionLabel: string;
     cards: LandingServiceCard[];
   };
+  clientTransfers: ClientTransfersContent;
+  mobileExperience: MobileExperienceContent;
   whyChoose: WhyChooseContent;
   rateInfo: RateInfoContent;
   agencyLocator: AgencyLocatorContent;

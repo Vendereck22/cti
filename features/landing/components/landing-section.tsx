@@ -33,15 +33,16 @@ export function LandingSection({
   return (
     <section
       className={cn(
-        "py-16 sm:py-20",
-        tone === "default" && "bg-background text-foreground",
-        tone === "muted" && "bg-muted/50 text-foreground",
-        tone === "primary" && "bg-primary text-primary-foreground",
+        "relative overflow-hidden border-t border-border py-16 sm:py-20",
+        tone === "default" && "bg-white text-foreground",
+        tone === "muted" && "bg-white text-foreground",
+        tone === "primary" &&
+          "bg-cti-gold text-foreground shadow-[inset_0_1px_0_rgba(5,6,138,0.16)]",
         className
       )}
       {...props}
     >
-      <LandingContainer>
+      <LandingContainer className="relative z-10">
         <LandingReveal>{children}</LandingReveal>
       </LandingContainer>
     </section>

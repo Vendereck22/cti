@@ -39,7 +39,7 @@ export function FAQSection({ content }: FAQSectionProps) {
           </p>
         </div>
 
-        <Card className="rounded-lg border-border bg-background shadow-none">
+        <Card className="rounded-lg border-cti-gold/25 bg-white shadow-none">
           <CardContent className="px-5">
             <Accordion defaultValue={defaultValue}>
               {content.items.map((item) => (

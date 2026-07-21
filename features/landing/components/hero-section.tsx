@@ -1,17 +1,16 @@
-import { ArrowRight, MapPin } from "lucide-react";
+import { ShieldCheck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { buttonVariants, Card, CardContent } from "@/components/ui";
+import { buttonVariants } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import type {
   LandingHeroContent,
   LandingImageContent,
   RateEstimatorContent,
 } from "../types";
+import { HeroQuickSelector } from "./hero-quick-selector";
 import { LandingReveal } from "./landing-reveal";
-import { LandingContainer } from "./landing-section";
-import { RateEstimator } from "./rate-estimator";
 
 interface HeroSectionProps {
   content: LandingHeroContent;
@@ -22,107 +21,88 @@ export function HeroSection({ content, estimator }: HeroSectionProps) {
   return (
     <section
       id="accueil"
-      className="relative overflow-hidden border-b border-border bg-background text-foreground"
+      className="relative overflow-hidden bg-cti-gold text-foreground"
     >
-      <LandingContainer className="relative grid items-center gap-10 py-10 lg:min-h-[720px] lg:grid-cols-[0.78fr_1.22fr] lg:py-16 xl:gap-12">
-        <LandingReveal>
-          <div className="max-w-2xl space-y-8">
-            <div className="inline-flex h-8 items-center rounded-md border border-cti-blue/20 bg-cti-blue/5 px-3 text-sm font-semibold text-cti-blue">
-              {content.eyebrow}
-            </div>
-            <div className="space-y-5">
-              <h1 className="text-balance text-4xl font-semibold leading-tight tracking-normal text-primary sm:text-5xl lg:text-6xl">
-                {content.title}
-              </h1>
-              <p className="max-w-xl text-pretty text-base leading-8 text-muted-foreground sm:text-lg">
-                {content.description}
-              </p>
-            </div>
-            <div className="flex flex-col gap-3 sm:flex-row">
-              <Link
-                href={content.primaryCta.href}
-                className={cn(
-                  buttonVariants({ size: "lg" }),
-                  "h-11 rounded-lg bg-cti-gold px-5 text-sm font-semibold text-primary hover:bg-[#e0a900]"
-                )}
-              >
-                {content.primaryCta.label}
-                <ArrowRight className="size-4" />
-              </Link>
-              <Link
-                href={content.secondaryCta.href}
-                className={cn(
-                  buttonVariants({ size: "lg", variant: "outline" }),
-                  "h-11 rounded-lg border-border px-5 text-sm font-semibold text-primary hover:bg-muted"
-                )}
-              >
-                <MapPin className="size-4" />
-                {content.secondaryCta.label}
-              </Link>
-            </div>
-            <div className="grid gap-3 sm:grid-cols-3">
-              {content.metrics.map((metric) => (
-                <Card
-                  key={metric.label}
-                  className="rounded-lg border-primary/10 bg-muted/50 shadow-none"
+      <div className="mx-auto grid max-w-[1480px] lg:min-h-[700px] lg:grid-cols-[minmax(0,0.98fr)_minmax(430px,0.92fr)]">
+        <div className="relative z-10 px-4 py-12 sm:px-6 sm:py-16 lg:py-20 xl:pl-20">
+          <LandingReveal>
+            <div className="max-w-3xl space-y-8">
+              <div className="space-y-5">
+                <p className="text-sm font-semibold uppercase tracking-[0.14em] text-primary">
+                  {content.eyebrow}
+                </p>
+                <h1 className="text-balance text-4xl font-bold leading-[1.05] tracking-normal text-foreground sm:text-5xl lg:text-6xl">
+                  {content.title}
+                </h1>
+                <p className="max-w-2xl text-pretty text-lg leading-8 text-foreground/80 sm:text-xl">
+                  {content.description}
+                </p>
+              </div>
+
+              <HeroQuickSelector
+                content={estimator}
+                destinationLabel={content.primaryCta.label}
+              />
+
+              <div className="space-y-8">
+                <Link
+                  href={content.primaryCta.href}
+                  className={cn(
+                    buttonVariants({ size: "lg" }),
+                    "h-14 w-full max-w-[360px] rounded-full bg-primary px-8 text-base font-bold text-white shadow-xl shadow-primary/20 hover:bg-primary/90"
+                  )}
                 >
-                  <CardContent className="p-4">
-                    <p className="text-lg font-semibold text-primary">
-                      {metric.value}
-                    </p>
-                    <p className="mt-1 text-sm leading-5 text-muted-foreground">
-                      {metric.label}
-                    </p>
-                  </CardContent>
-                </Card>
-              ))}
+                  {content.primaryCta.label}
+                </Link>
+
+                <div className="flex flex-col gap-3 text-sm font-semibold text-foreground sm:flex-row sm:items-center">
+                  <span className="inline-flex items-center gap-3">
+                    <ShieldCheck className="size-5 text-primary" />
+                    Intelligence. Sécurité. Ensemble.
+                  </span>
+                  <Link
+                    href="/aide"
+                    className="font-bold underline underline-offset-4 hover:text-primary"
+                  >
+                    En savoir plus sur la sécurité CTI
+                  </Link>
+                </div>
+              </div>
             </div>
-          </div>
-        </LandingReveal>
+          </LandingReveal>
+        </div>
 
         <LandingReveal>
-          <div className="grid w-full items-start gap-4 xl:grid-cols-[0.78fr_1fr] xl:gap-5">
-            <div className="order-2 xl:order-1">
-              <HeroVisual visual={content.visual} />
-            </div>
-            <div className="order-1 xl:order-2">
-              <RateEstimator content={estimator} />
-            </div>
+          <div className="relative min-h-[340px] overflow-hidden bg-primary sm:min-h-[420px] lg:mt-32 lg:h-[calc(100%-8rem)] lg:min-h-0 lg:[clip-path:url(#landing-hero-image-clip)]">
+            <HeroVisual visual={content.visual} />
           </div>
         </LandingReveal>
-      </LandingContainer>
+      </div>
     </section>
   );
 }
 
 function HeroVisual({ visual }: { visual: LandingImageContent }) {
   return (
-    <Card className="overflow-hidden rounded-lg border-primary/10 bg-primary text-primary-foreground shadow-2xl shadow-primary/15">
-      <div className="relative h-52 overflow-hidden bg-muted sm:h-64 xl:h-[420px]">
-        <Image
-          src={visual.src}
-          alt={visual.alt}
-          fill
-          sizes="(min-width: 1280px) 360px, (min-width: 1024px) 45vw, 100vw"
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-primary/10" />
-      </div>
-      <CardContent className="space-y-3 p-5">
-        {visual.eyebrow ? (
-          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cti-gold">
-            {visual.eyebrow}
-          </p>
-        ) : null}
-        {visual.title ? (
-          <h2 className="text-xl font-semibold leading-tight text-white">
-            {visual.title}
-          </h2>
-        ) : null}
-        {visual.description ? (
-          <p className="text-sm leading-6 text-blue-50">{visual.description}</p>
-        ) : null}
-      </CardContent>
-    </Card>
+    <>
+      <svg aria-hidden="true" focusable="false" className="absolute size-0">
+        <clipPath
+          id="landing-hero-image-clip"
+          clipPathUnits="objectBoundingBox"
+        >
+          <path d="M 0.34 0 C 0.22 0 0.14 0.08 0.09 0.22 L 0 1 H 1 V 0 Z" />
+        </clipPath>
+      </svg>
+      <Image
+        src={visual.src}
+        alt={visual.alt}
+        fill
+        priority
+        unoptimized
+        sizes="(min-width: 1024px) 48vw, 100vw"
+        className="object-cover object-[68%_center]"
+      />
+      <div className="absolute inset-0 bg-primary/10" />
+    </>
   );
 }

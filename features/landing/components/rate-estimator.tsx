@@ -213,7 +213,7 @@ export function RateEstimator({ content }: RateEstimatorProps) {
       <CardFooter className="flex-col items-stretch gap-3 border-t border-border bg-muted/40 sm:flex-row sm:items-center">
         <Button
           type="button"
-          className="h-11 rounded-lg bg-cti-gold px-4 text-sm font-semibold text-primary hover:bg-[#e0a900]"
+          className="h-11 rounded-lg bg-primary px-4 text-sm font-semibold text-white hover:bg-primary/90"
         >
           {content.submitLabel}
           <ArrowRight className="size-4" />
