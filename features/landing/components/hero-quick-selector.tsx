@@ -152,10 +152,10 @@ function HeroAmountControl({
       >
         <SelectTrigger
           aria-label={currencyLabel}
-          className="h-11 min-w-[116px] rounded-full border-slate-300 bg-white px-2.5 text-left"
+          className="!h-auto min-w-[96px] justify-end rounded-md !border-0 !bg-transparent !px-0 !py-0 text-right shadow-none focus-visible:!border-transparent focus-visible:!ring-0"
         >
-          <span className="inline-flex items-center gap-2 text-lg font-semibold text-foreground">
-            <CurrencyBadge value={selectedCurrency?.flag ?? "€"} />
+          <span className="inline-flex items-center gap-2 text-lg font-bold text-foreground">
+            <CurrencyMark value={selectedCurrency?.flag ?? "€"} />
             {selectedCurrency?.code ?? "EUR"}
           </span>
         </SelectTrigger>
@@ -198,7 +198,7 @@ function CountryOptionRow({
 function CurrencyOptionRow({ currency }: { currency: CurrencyOption }) {
   return (
     <span className="flex min-w-0 items-center gap-3">
-      <CurrencyBadge value={currency.flag} />
+      <CurrencyMark value={currency.flag} framed />
       <span className="grid min-w-0">
         <span className="truncate font-semibold text-foreground">
           {currency.code}
@@ -211,16 +211,24 @@ function CurrencyOptionRow({ currency }: { currency: CurrencyOption }) {
   );
 }
 
-function CurrencyBadge({ value }: { value: string }) {
+function CurrencyMark({
+  value,
+  framed = false,
+}: {
+  value: string;
+  framed?: boolean;
+}) {
   const isLongValue = value.length > 2;
 
   return (
     <span
       aria-hidden="true"
       className={
-        isLongValue
-          ? "flex size-8 shrink-0 items-center justify-center rounded-full bg-white px-1 text-[10px] font-bold leading-none ring-1 ring-slate-300"
-          : "flex size-8 shrink-0 items-center justify-center rounded-full bg-white text-base font-semibold ring-1 ring-slate-300"
+        framed
+          ? "flex h-8 min-w-8 shrink-0 items-center justify-center rounded-md bg-cti-gold/20 px-2 text-sm font-bold leading-none text-primary ring-1 ring-cti-gold/45"
+          : isLongValue
+            ? "shrink-0 text-xs font-bold leading-none text-primary"
+            : "shrink-0 text-lg font-bold leading-none text-primary"
       }
     >
       {value}
