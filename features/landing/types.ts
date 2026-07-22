@@ -292,7 +292,7 @@ export interface FooterContent {
 }
 
 export interface PublicInfoPageContent extends LandingSectionContent {
-  highlights: {
+  highlights?: {
     title: string;
     description: string;
     icon: LandingIconName;
@@ -303,6 +303,8 @@ export interface PublicInfoPageContent extends LandingSectionContent {
     description: string;
     image?: LandingImageContent;
   }[];
+  missionVisionSection?: LandingSectionContent;
+  teamNote?: string;
   team?: {
     eyebrow?: string;
     title: string;
@@ -310,6 +312,7 @@ export interface PublicInfoPageContent extends LandingSectionContent {
     members: {
       name: string;
       role: string;
+      bio?: string;
       image: LandingImageContent;
     }[];
   };

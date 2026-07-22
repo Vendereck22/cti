@@ -31,6 +31,8 @@ const icons: Partial<Record<LandingIconName, LucideIcon>> = {
 };
 
 export function PublicInfoPage({ content }: { content: PublicInfoPageContent }) {
+  const highlights = content.highlights ?? [];
+
   return (
     <main>
       <LandingSection>
@@ -40,30 +42,32 @@ export function PublicInfoPage({ content }: { content: PublicInfoPageContent }) 
               <SectionHeader content={content} />
               {content.visual && <EditorialImageCard visual={content.visual} tone="light" />}
             </div>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
-              {content.highlights.map((item) => {
-                const Icon = icons[item.icon] ?? ShieldCheck;
+            {highlights.length > 0 ? (
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+                {highlights.map((item) => {
+                  const Icon = icons[item.icon] ?? ShieldCheck;
 
-                return (
-                  <Card
-                    key={item.title}
-                    className="rounded-lg border-border shadow-none"
-                  >
-                    <CardHeader>
-                      <span className="flex size-10 items-center justify-center rounded-lg bg-cti-blue/10 text-cti-blue">
-                        <Icon className="size-5" />
-                      </span>
-                      <CardTitle className="mt-2 text-base font-semibold text-foreground">
-                        {item.title}
-                      </CardTitle>
-                      <CardDescription className="text-sm leading-6">
-                        {item.description}
-                      </CardDescription>
-                    </CardHeader>
-                  </Card>
-                );
-              })}
-            </div>
+                  return (
+                    <Card
+                      key={item.title}
+                      className="rounded-lg border-border shadow-none"
+                    >
+                      <CardHeader>
+                        <span className="flex size-10 items-center justify-center rounded-lg bg-cti-blue/10 text-cti-blue">
+                          <Icon className="size-5" />
+                        </span>
+                        <CardTitle className="mt-2 text-base font-semibold text-foreground">
+                          {item.title}
+                        </CardTitle>
+                        <CardDescription className="text-sm leading-6">
+                          {item.description}
+                        </CardDescription>
+                      </CardHeader>
+                    </Card>
+                  );
+                })}
+              </div>
+            ) : null}
           </div>
 
           {(content.primaryCta || content.secondaryCta) && (

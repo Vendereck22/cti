@@ -601,59 +601,48 @@ export const landingContent = {
   },
   publicPages: {
     about: {
-      eyebrow: "Notre Histoire",
-      title: "CTI RDC : Plus proche de vous, a chaque transfert.",
+      eyebrow: "Notre histoire",
+      title: "CTI RDC : plus proche de vous, à chaque transfert.",
       description:
-        "Depuis notre creation, CTI s'engage a offrir une solution de transfert d'argent fiable, humaine et securisee. Notre mission est de rapprocher les familles et les professionnels a travers un reseau d'agences physiques en RDC et en Belgique, en garantissant transparence et rapidite.",
-      visual: {
-        src: "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=1200",
-        alt: "Equipe CTI RDC souriante",
-        eyebrow: "Notre Equipe",
-        title: "L'humain au centre",
-        description: "Des professionnels devoues a la reussite de vos operations financieres.",
+        "CTI accompagne les familles, la diaspora et les professionnels avec un service de transfert d'argent clair, humain et sécurisé. Notre présence en RDC et en Belgique permet de préparer, vérifier et suivre chaque opération avec sérieux.",
+      missionVisionSection: {
+        eyebrow: "Mission & vision",
+        title: "Une présence construite autour de la confiance.",
+        description:
+          "CTI développe un service de transfert d'argent qui combine proximité physique, contrôle des informations et accompagnement humain.",
       },
-      highlights: [
-        {
-          title: "Notre Mission",
-          description:
-            "Faciliter l'envoi et le retrait d'argent avec un parcours clair, humain et controle pour la RDC et la Belgique.",
-          icon: "shield",
-        },
-        {
-          title: "Notre Vision",
-          description:
-            "Devenir le partenaire de confiance numero un pour tous vos transferts internationaux, avec une presence locale forte.",
-          icon: "agency",
-        },
-        {
-          title: "Proximite & Equipe",
-          description:
-            "Une equipe dediee a Kinshasa et Bruxelles, prete a vous accompagner au guichet pour chaque operation.",
-          icon: "map",
-        },
-      ],
       storyBlocks: [
         {
-          eyebrow: "Notre Mission",
-          title: "Sécuriser et humaniser vos transferts d'argent.",
+          eyebrow: "Notre mission",
+          title: "Rendre chaque transfert simple, lisible et encadré.",
           description:
-            "Chez CTI, notre mission est claire : offrir une expérience de transfert d'argent transparente, rapide et encadrée. Nous mettons un point d'honneur à accompagner chaque client avec clarté, du calcul des frais jusqu'au retrait au guichet.",
+            "Nous aidons les clients à préparer leurs opérations, comprendre les informations utiles et finaliser leurs transferts avec un accompagnement clair en agence.",
         },
         {
-          eyebrow: "Notre Vision",
-          title: "Le pont financier de confiance entre l'Europe et la RDC.",
+          eyebrow: "Notre vision",
+          title: "Relier durablement la RDC, la Belgique et la diaspora.",
           description:
-            "Nous aspirons à devenir la référence absolue pour la diaspora et nos partenaires. Une institution bâtie sur la confiance, qui relie les réalités locales congolaises aux standards financiers internationaux.",
+            "Nous voulons devenir un partenaire de référence pour les familles et les professionnels qui ont besoin d'un service fiable, proche et transparent.",
+        },
+        {
+          eyebrow: "Notre engagement",
+          title: "Protéger les clients avec sérieux et confidentialité.",
+          description:
+            "Chaque opération doit s'appuyer sur une vérification rigoureuse, une information compréhensible et un respect strict des données personnelles.",
         },
       ],
+      teamNote:
+        "Chaque conseiller CTI est formé pour accueillir, vérifier les informations essentielles et guider le client sans complexifier le parcours.",
       team: {
-        eyebrow: "Notre Équipe",
+        eyebrow: "Notre équipe",
         title: "L'humain au cœur de chaque opération CTI.",
-        description: "Des professionnels dévoués, formés aux normes de conformité, prêts à vous accompagner.",
+        description:
+          "Des professionnels formés aux exigences de conformité, prêts à accueillir les clients, vérifier les informations et sécuriser le parcours.",
         members: [
           {
             name: "Marie Dubois",
             role: "Responsable Agence Bruxelles",
+            bio: "Elle coordonne l'accueil, la préparation des dossiers et l'accompagnement des clients depuis la Belgique.",
             image: {
               src: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=600",
               alt: "Portrait de Marie Dubois",
@@ -662,6 +651,7 @@ export const landingContent = {
           {
             name: "Jean-Paul Makambo",
             role: "Directeur des Opérations Kinshasa",
+            bio: "Il supervise la qualité des opérations, le suivi des transferts et la cohérence du service en agence.",
             image: {
               src: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=600",
               alt: "Portrait de Jean-Paul Makambo",
@@ -670,6 +660,7 @@ export const landingContent = {
           {
             name: "Sophie Kalala",
             role: "Conseillère Clientèle",
+            bio: "Elle accompagne les clients au guichet avec des explications simples sur les pièces, les frais et le retrait.",
             image: {
               src: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=600",
               alt: "Portrait de Sophie Kalala",
@@ -678,6 +669,7 @@ export const landingContent = {
           {
             name: "Marc Peeters",
             role: "Analyste Conformité",
+            bio: "Il veille au respect des contrôles internes, de la confidentialité et des exigences de conformité CTI.",
             image: {
               src: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=600",
               alt: "Portrait de Marc Peeters",
@@ -685,48 +677,6 @@ export const landingContent = {
           },
         ],
       },
-      agencyShowcase: {
-        eyebrow: "Nos Agences",
-        title: "Des espaces CTI proches, visibles et rassurants.",
-        description:
-          "Quelques exemples d'agences physiques pensées pour accueillir les clients, vérifier les informations et accompagner les opérations avec sérieux.",
-        agencies: [
-          {
-            name: "CTI Gombe",
-            location: "Kinshasa, RDC",
-            image: {
-              src: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=900",
-              alt: "Intérieur moderne d'une agence de service, image illustrative CTI Gombe",
-            },
-          },
-          {
-            name: "CTI Limete",
-            location: "Kinshasa, RDC",
-            image: {
-              src: "https://images.unsplash.com/photo-1568992688065-536aad8a12f6?auto=format&fit=crop&q=80&w=900",
-              alt: "Espace d'accueil professionnel, image illustrative CTI Limete",
-            },
-          },
-          {
-            name: "CTI Bruxelles",
-            location: "Bruxelles, Belgique",
-            image: {
-              src: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=900",
-              alt: "Bureaux professionnels lumineux, image illustrative CTI Bruxelles",
-            },
-          },
-          {
-            name: "Accueil guichet CTI",
-            location: "Réseau CTI",
-            image: {
-              src: "https://images.unsplash.com/photo-1556745757-8d76bdb6984b?auto=format&fit=crop&q=80&w=900",
-              alt: "Accueil client au guichet, image illustrative du réseau CTI",
-            },
-          },
-        ],
-      },
-      primaryCta: { label: "Trouver une agence", href: "/agences" },
-      secondaryCta: { label: "Contacter CTI", href: "/contacts" },
     },
     contact: {
       eyebrow: "Contact",
