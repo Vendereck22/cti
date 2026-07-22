@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function AgenciesPage() {
   return (
     <LandingPageShell content={landingContent}>
-      <main>
+      <main className="pt-28 sm:pt-32">
         <AgencyLocatorSection content={landingContent.agencyLocator} />
       </main>
     </LandingPageShell>

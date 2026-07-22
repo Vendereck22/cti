@@ -24,7 +24,7 @@ export function HeroSection({ content, estimator }: HeroSectionProps) {
       className="relative overflow-hidden bg-cti-gold text-foreground"
     >
       <div className="mx-auto grid max-w-[1480px] lg:min-h-[700px] lg:grid-cols-[minmax(0,0.98fr)_minmax(430px,0.92fr)]">
-        <div className="relative z-10 px-4 py-12 sm:px-6 sm:py-16 lg:py-20 xl:pl-20">
+        <div className="relative z-10 px-4 pb-12 pt-32 sm:px-6 sm:pb-16 sm:pt-36 lg:pb-20 lg:pt-44 xl:pl-20">
           <LandingReveal>
             <div className="max-w-3xl space-y-8">
               <div className="space-y-5">

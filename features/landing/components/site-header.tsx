@@ -37,18 +37,18 @@ export function SiteHeader({ content }: { content: LandingHeaderContent }) {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 transition-[background-color,border-color,box-shadow] duration-300",
+        "fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,box-shadow] duration-300",
         hasScrolled
-          ? "border-transparent bg-transparent shadow-none"
-          : "border-b border-border bg-white/95 shadow-sm shadow-black/5 backdrop-blur"
+          ? "border-b border-border bg-white/95 shadow-sm shadow-black/5 backdrop-blur"
+          : "border-transparent bg-transparent shadow-none"
       )}
     >
       <div
         className={cn(
-          "overflow-hidden border-b bg-white text-primary transition-[max-height,opacity,transform,border-color] duration-300 ease-out",
+          "overflow-hidden border-b text-primary transition-[max-height,opacity,transform,border-color,background-color] duration-300 ease-out",
           hasScrolled
             ? "pointer-events-none max-h-0 -translate-y-2 border-b-0 border-transparent opacity-0"
-            : "max-h-12 translate-y-0 border-border opacity-100"
+            : "max-h-12 translate-y-0 border-white/20 bg-transparent opacity-100"
         )}
       >
         <LandingContainer className="flex min-h-10 items-center justify-between gap-2 py-2 sm:gap-4">
@@ -82,7 +82,7 @@ export function SiteHeader({ content }: { content: LandingHeaderContent }) {
       <div
         className={cn(
           "transition-colors duration-300",
-          hasScrolled ? "bg-transparent" : "bg-white"
+          hasScrolled ? "bg-white/95 backdrop-blur" : "bg-transparent"
         )}
       >
         <LandingContainer
@@ -101,9 +101,7 @@ export function SiteHeader({ content }: { content: LandingHeaderContent }) {
                   href={item.href}
                   className={cn(
                     "text-sm font-semibold transition-colors hover:text-cti-blue",
-                    hasScrolled
-                      ? "text-foreground drop-shadow-[0_1px_0_rgba(255,255,255,0.55)]"
-                      : "text-foreground"
+                    "text-foreground"
                   )}
                 >
                   {item.label}
@@ -133,7 +131,9 @@ function MobileNavigation({
         className={cn(
           buttonVariants({ size: "icon-lg", variant: "outline" }),
           "rounded-lg border-border text-primary md:hidden",
-          hasScrolled && "border-primary/20 bg-white/70 shadow-sm backdrop-blur"
+          hasScrolled
+            ? "border-primary/20 bg-white shadow-sm"
+            : "border-primary/10 bg-white/80 shadow-sm backdrop-blur"
         )}
       >
         <Menu className="size-4" />

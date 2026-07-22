@@ -52,7 +52,7 @@ export function ContactPage({ content }: { content: ContactPageContent }) {
 function ContactHero({ content }: { content: ContactPageContent }) {
   return (
     <section className="relative overflow-hidden border-b border-primary/10 bg-cti-gold text-foreground">
-      <LandingContainer className="grid gap-8 py-14 sm:py-16 lg:grid-cols-[minmax(0,0.95fr)_minmax(380px,0.72fr)] lg:items-end lg:py-20">
+      <LandingContainer className="grid gap-8 pb-14 pt-32 sm:pb-16 sm:pt-36 lg:grid-cols-[minmax(0,0.95fr)_minmax(380px,0.72fr)] lg:items-end lg:pb-20 lg:pt-44">
         <div className="max-w-3xl space-y-5">
           {content.eyebrow ? (
             <Badge

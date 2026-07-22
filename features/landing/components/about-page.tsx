@@ -37,7 +37,7 @@ export function AboutPage({ content }: { content: PublicInfoPageContent }) {
 function AboutStorySection({ content }: { content: PublicInfoPageContent }) {
   return (
     <section className="relative overflow-hidden border-b border-primary/10 bg-cti-gold text-foreground">
-      <LandingContainer className="py-14 sm:py-16 lg:py-20">
+      <LandingContainer className="pb-14 pt-32 sm:pb-16 sm:pt-36 lg:pb-20 lg:pt-44">
         <div className="max-w-4xl space-y-5">
           {content.eyebrow ? (
             <Badge
