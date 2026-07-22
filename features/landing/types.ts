@@ -176,6 +176,7 @@ export interface LandingServiceCard {
   description: string;
   icon: LandingIconName;
   href: string;
+  image: LandingImageContent;
 }
 
 export interface LandingSectionContent {
@@ -277,7 +278,14 @@ export interface FAQItem {
 }
 
 export interface FAQContent extends LandingSectionContent {
+  supportTitle?: string;
+  supportDescription?: string;
+  supportItems?: string[];
   items: FAQItem[];
+}
+
+export interface CountryListContent extends LandingSectionContent {
+  countries: CountryOption[];
 }
 
 export interface FooterContent {
@@ -380,6 +388,7 @@ export interface PublicLandingContent {
   security: SecurityContent;
   testimonials: TestimonialContent;
   faq: FAQContent;
+  countryList: CountryListContent;
   finalCta: LandingSectionContent & {
     primaryCta: LandingLink;
     secondaryCta: LandingLink;

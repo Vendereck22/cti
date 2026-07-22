@@ -54,7 +54,7 @@ function SocialLinkItem({
       className={cn(
         "inline-flex items-center justify-center rounded-lg border transition-colors",
         isFooter
-          ? "size-9 border-primary/10 bg-white text-primary hover:border-primary hover:bg-primary hover:text-cti-gold"
+          ? "size-10 border-white/10 bg-white/10 text-white hover:border-cti-gold hover:bg-cti-gold hover:text-primary"
           : "size-6 border-primary/10 bg-white text-primary hover:border-primary hover:bg-primary hover:text-cti-gold sm:size-8"
       )}
     >

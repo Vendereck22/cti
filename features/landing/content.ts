@@ -19,7 +19,6 @@ export const landingContent = {
       { label: "Accueil", href: "/" },
       { label: "A propos", href: "/a-propos" },
       { label: "Agences", href: "/agences" },
-      { label: "Aide", href: "/aide" },
       { label: "Contact", href: "/contacts" },
     ],
     socialLinks: [
@@ -141,7 +140,7 @@ export const landingContent = {
               "Le bénéficiaire se présente dans une agence CTI avec son code unique et une pièce d'identité valide pour retirer les fonds.",
             icon: "agency",
             actionLabel: "Trouver une agence",
-            href: "/#agences",
+            href: "/agences",
           },
           {
             title: "Code unique de retrait",
@@ -262,6 +261,10 @@ export const landingContent = {
           "Envoyez des fonds vers les points CTI en Europe, notamment Liège et Bruxelles, avec un suivi clair jusqu'à la confirmation.",
         icon: "send",
         href: "/#simulateur",
+        image: {
+          src: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&q=80&w=1000",
+          alt: "Billets et préparation d'un transfert vers l'Europe, image illustrative CTI",
+        },
       },
       {
         title: "Opérations mobiles",
@@ -269,6 +272,10 @@ export const landingContent = {
           "Facilitez vos opérations via les réseaux mobiles courants : M-Pesa, Orange Money et Airtel selon les disponibilités locales.",
         icon: "mobile",
         href: "/contacts",
+        image: {
+          src: "/images/landing/mobile-cti-phone.png",
+          alt: "Téléphone affichant le logo CTI pour les opérations mobiles",
+        },
       },
       {
         title: "Service Western Union",
@@ -276,13 +283,21 @@ export const landingContent = {
           "Bénéficiez d'un accompagnement CTI pour les transferts Western Union, les pièces à présenter et les informations de retrait.",
         icon: "money",
         href: "/aide",
+        image: {
+          src: "https://images.unsplash.com/photo-1556745757-8d76bdb6984b?auto=format&fit=crop&q=80&w=1000",
+          alt: "Conseiller accompagnant un client au guichet, image illustrative CTI",
+        },
       },
       {
         title: "Transfert de colis",
         description:
           "Préparez l'envoi et la réception de colis avec les informations utiles sur les agences, les contacts et le suivi.",
         icon: "package",
-        href: "/#agences",
+        href: "/agences",
+        image: {
+          src: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1000",
+          alt: "Colis préparés pour une expédition, image illustrative CTI",
+        },
       },
     ],
   },
@@ -521,34 +536,42 @@ export const landingContent = {
     ],
   },
   faq: {
-    eyebrow: "Aide",
-    title: "Questions frequentes",
+    eyebrow: "Aide CTI",
+    title: "Questions fréquentes",
     description:
-      "Les reponses essentielles pour comprendre les pieces, les codes, les frais et les retraits.",
+      "Les réponses essentielles pour comprendre les pièces, les codes, les frais et les retraits avant votre passage en agence.",
+    supportTitle: "Assistance claire avant le guichet",
+    supportDescription:
+      "La FAQ rassemble les points qui reviennent le plus souvent lors de la préparation d'un transfert CTI.",
+    supportItems: [
+      "Pièce d'identité et vérification",
+      "Code unique de retrait",
+      "Frais et taux indicatifs",
+    ],
     items: [
       {
         id: "piece-identite",
-        question: "Quelle piece faut-il pour envoyer ou recevoir ?",
+        question: "Quelle pièce faut-il pour envoyer ou recevoir ?",
         answer:
-          "Une piece d'identite valide est demandee afin de verifier l'expediteur ou le beneficiaire.",
+          "Une pièce d'identité valide est demandée afin de vérifier l'expéditeur ou le bénéficiaire.",
       },
       {
         id: "code-retrait",
-        question: "Comment le beneficiaire retire-t-il l'argent ?",
+        question: "Comment le bénéficiaire retire-t-il l'argent ?",
         answer:
-          "Le beneficiaire se presente en agence avec le code unique du transfert et sa piece d'identite.",
+          "Le bénéficiaire se présente en agence avec le code unique du transfert et sa pièce d'identité.",
       },
       {
         id: "frais",
-        question: "Les frais affiches par le simulateur sont-ils definitifs ?",
+        question: "Les frais affichés par le simulateur sont-ils définitifs ?",
         answer:
-          "Non. Le simulateur affiche une estimation. Les frais finaux sont confirmes au guichet avant validation.",
+          "Non. Le simulateur affiche une estimation. Les frais finaux sont confirmés au guichet avant validation.",
       },
       {
         id: "delais",
         question: "Combien de temps prend un transfert ?",
         answer:
-          "Le delai depend de l'agence, de la devise et des controles necessaires. L'agence confirme le delai au moment de l'operation.",
+          "Le délai dépend de l'agence, de la devise et des contrôles nécessaires. L'agence confirme le délai au moment de l'opération.",
       },
       {
         id: "devises",
@@ -560,7 +583,75 @@ export const landingContent = {
         id: "agence",
         question: "Puis-je commencer un transfert en ligne ?",
         answer:
-          "La landing permet de simuler et de trouver une agence. Elle ne cree pas encore de transaction en ligne.",
+          "La landing permet de simuler et de trouver une agence. Elle ne crée pas encore de transaction en ligne.",
+      },
+    ],
+  },
+  countryList: {
+    eyebrow: "Pays disponibles",
+    title: "Envoyer de l'argent à l'étranger avec CTI",
+    description:
+      "CTI met en avant les destinations prioritaires pour les clients en RDC, en Belgique et dans la diaspora. Les disponibilités finales sont confirmées en agence.",
+    countries: [
+      {
+        code: "CD",
+        label: "RDC",
+        flag: "🇨🇩",
+        description: "Kinshasa et réseau CTI local",
+      },
+      {
+        code: "BE",
+        label: "Belgique",
+        flag: "🇧🇪",
+        description: "Bruxelles et Liège",
+      },
+      {
+        code: "FR",
+        label: "France",
+        flag: "🇫🇷",
+        description: "Diaspora et services Europe",
+      },
+      {
+        code: "CG",
+        label: "Congo-Brazzaville",
+        flag: "🇨🇬",
+        description: "Destination régionale",
+      },
+      {
+        code: "AO",
+        label: "Angola",
+        flag: "🇦🇴",
+        description: "Informations à confirmer",
+      },
+      {
+        code: "CM",
+        label: "Cameroun",
+        flag: "🇨🇲",
+        description: "Parcours indicatif",
+      },
+      {
+        code: "SN",
+        label: "Sénégal",
+        flag: "🇸🇳",
+        description: "Réseau partenaire à confirmer",
+      },
+      {
+        code: "CI",
+        label: "Côte d'Ivoire",
+        flag: "🇨🇮",
+        description: "Disponibilité selon agence",
+      },
+      {
+        code: "MA",
+        label: "Maroc",
+        flag: "🇲🇦",
+        description: "Service indicatif",
+      },
+      {
+        code: "ZA",
+        label: "Afrique du Sud",
+        flag: "🇿🇦",
+        description: "Destination à vérifier",
       },
     ],
   },

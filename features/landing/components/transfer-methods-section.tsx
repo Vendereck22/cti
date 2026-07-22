@@ -10,7 +10,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import {
   buttonVariants,
@@ -45,9 +45,81 @@ export function TransferMethodsSection({
 }) {
   const [activeGroupId, setActiveGroupId] =
     useState<TransferMethodGroupId>(content.defaultGroupId);
+  const scrollerRef = useRef<HTMLDivElement>(null);
   const activeGroup =
     content.groups.find((group) => group.id === activeGroupId) ??
     content.groups[0];
+
+  useEffect(() => {
+    const scroller = scrollerRef.current;
+
+    if (!scroller) {
+      return;
+    }
+
+    scroller.scrollTo({ left: 0 });
+
+    const mobileQuery = window.matchMedia("(max-width: 767px)");
+    const reducedMotionQuery = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    );
+    let intervalId: number | undefined;
+
+    const stop = () => {
+      if (intervalId) {
+        window.clearInterval(intervalId);
+        intervalId = undefined;
+      }
+    };
+
+    const start = () => {
+      stop();
+
+      if (!mobileQuery.matches || reducedMotionQuery.matches) {
+        return;
+      }
+
+      intervalId = window.setInterval(() => {
+        const cards = Array.from(
+          scroller.querySelectorAll<HTMLElement>("[data-transfer-method-card]")
+        );
+
+        if (cards.length < 2) {
+          return;
+        }
+
+        const currentIndex = cards.reduce((closestIndex, card, index) => {
+          const currentDistance = Math.abs(card.offsetLeft - scroller.scrollLeft);
+          const closestDistance = Math.abs(
+            cards[closestIndex].offsetLeft - scroller.scrollLeft
+          );
+
+          return currentDistance < closestDistance ? index : closestIndex;
+        }, 0);
+        const nextCard = cards[(currentIndex + 1) % cards.length];
+        const scrollerRect = scroller.getBoundingClientRect();
+        const nextCardRect = nextCard.getBoundingClientRect();
+
+        scroller.scrollTo({
+          behavior: "smooth",
+          left: Math.max(
+            0,
+            scroller.scrollLeft + nextCardRect.left - scrollerRect.left
+          ),
+        });
+      }, 4800);
+    };
+
+    start();
+    mobileQuery.addEventListener("change", start);
+    reducedMotionQuery.addEventListener("change", start);
+
+    return () => {
+      stop();
+      mobileQuery.removeEventListener("change", start);
+      reducedMotionQuery.removeEventListener("change", start);
+    };
+  }, [activeGroupId]);
 
   return (
     <section className="border-b-4 border-b-cti-gold bg-muted py-14 text-foreground sm:py-16 lg:py-20">
@@ -91,13 +163,21 @@ export function TransferMethodsSection({
         </div>
 
         <div
+          ref={scrollerRef}
+          data-transfer-method-scroller
           id={`transfer-method-panel-${activeGroup.id}`}
           role="tabpanel"
           aria-labelledby={`transfer-method-tab-${activeGroup.id}`}
-          className="mt-8 grid gap-5 md:grid-cols-3"
+          className="mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-3 scroll-smooth [scrollbar-width:none] md:grid md:grid-cols-3 md:overflow-visible md:pb-0 [&::-webkit-scrollbar]:hidden"
         >
           {activeGroup.cards.map((card) => (
-            <TransferMethodCardView key={card.title} card={card} />
+            <div
+              key={card.title}
+              data-transfer-method-card
+              className="w-[calc(100vw-3rem)] max-w-[22rem] shrink-0 snap-start sm:w-[420px] sm:max-w-none md:w-auto md:min-w-0 md:shrink"
+            >
+              <TransferMethodCardView card={card} />
+            </div>
           ))}
         </div>
 
@@ -121,7 +201,7 @@ function TransferMethodCardView({ card }: { card: TransferMethodCard }) {
   const Icon = methodIcons[card.icon] ?? Wallet;
 
   return (
-    <Card className="min-h-[360px] rounded-lg border-border bg-white shadow-none transition-colors hover:border-primary/25">
+    <Card className="h-full min-h-[340px] rounded-lg border-border bg-white shadow-none transition-colors hover:border-primary/25 sm:min-h-[360px]">
       <CardHeader className="grid grid-cols-[1fr_auto] items-start gap-5 p-6 pb-0 sm:p-8 sm:pb-0">
         <CardTitle className="text-2xl font-bold leading-tight tracking-normal text-foreground">
           {card.title}
