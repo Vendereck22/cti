@@ -12,6 +12,7 @@ import {
   Phone,
   Search,
   ShieldCheck,
+  type LucideIcon,
 } from "lucide-react";
 
 import {
@@ -219,7 +220,7 @@ function AgencyMetric({
   value,
   label,
 }: {
-  icon: typeof Building2;
+  icon: LucideIcon;
   value: string;
   label: string;
 }) {
@@ -313,7 +314,7 @@ function AgencyInfo({
   icon: Icon,
   children,
 }: {
-  icon: typeof MapPin;
+  icon: LucideIcon;
   children: string;
 }) {
   return (
