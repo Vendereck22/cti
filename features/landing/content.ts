@@ -1,4 +1,6 @@
 import type { PublicLandingContent } from "./types";
+import { getWorldCountryOptions } from "./countries";
+import { getWorldCurrencyOptions } from "./currencies";
 
 export const landingContent = {
   seo: {
@@ -71,50 +73,9 @@ export const landingContent = {
     initialSourceCurrency: "EUR",
     initialTargetCurrency: "CDF",
     initialDestinationId: "kinshasa-gombe",
-    initialCountryCode: "cd",
-    countries: [
-      {
-        code: "cd",
-        label: "RDC",
-        flag: "🇨🇩",
-        description: "Kinshasa, agences CTI et points de retrait.",
-      },
-      {
-        code: "be",
-        label: "Belgique",
-        flag: "🇧🇪",
-        description: "Liège et Bruxelles pour les transferts vers l'Europe.",
-      },
-      {
-        code: "fr",
-        label: "France",
-        flag: "🇫🇷",
-        description: "Parcours indicatif pour les clients en Europe.",
-      },
-      {
-        code: "cg",
-        label: "Congo-Brazzaville",
-        flag: "🇨🇬",
-        description: "Envois et retraits à préparer avec l'équipe CTI.",
-      },
-      {
-        code: "ao",
-        label: "Angola",
-        flag: "🇦🇴",
-        description: "Destination régionale à confirmer en agence.",
-      },
-      {
-        code: "cm",
-        label: "Cameroun",
-        flag: "🇨🇲",
-        description: "Informations indicatives avant validation au guichet.",
-      },
-    ],
-    currencies: [
-      { code: "EUR", label: "EUR - Euro", flag: "🇪🇺" },
-      { code: "USD", label: "USD - Dollar US", flag: "🇺🇸" },
-      { code: "CDF", label: "CDF - Franc congolais", flag: "🇨🇩" },
-    ],
+    initialCountryCode: "CD",
+    countries: getWorldCountryOptions(),
+    currencies: getWorldCurrencyOptions(),
     destinations: [
       {
         id: "kinshasa-gombe",
@@ -351,10 +312,10 @@ export const landingContent = {
     ],
   },
   mobileExperience: {
-    eyebrow: "Expérience mobile CTI",
-    title: "Vos transferts d'argent simplifiés avec CTI",
+    eyebrow: "Application CTI",
+    title: "Téléchargez l'application CTI et gardez vos transferts sous contrôle",
     description:
-      "Préparez vos opérations, consultez les informations utiles et gardez un repère clair avant de finaliser votre transfert avec l'équipe CTI.",
+      "Préparez vos opérations, consultez les informations utiles et visualisez les étapes clés avant de finaliser votre transfert avec l'équipe CTI.",
     visual: {
       src: "/images/landing/mobile-cti-phone.png",
       alt: "Main touchant un téléphone affichant le logo CTI, visuel illustratif",
@@ -380,7 +341,7 @@ export const landingContent = {
         icon: "refresh",
       },
     ],
-    primaryCta: { label: "En savoir plus", href: "/aide" },
+    primaryCta: { label: "Télécharger l'application", href: "/contacts" },
     note: "Visuel illustratif de l'expérience mobile CTI.",
   },
   whyChoose: {
@@ -769,15 +730,57 @@ export const landingContent = {
     },
     contact: {
       eyebrow: "Contact",
-      title: "Nous sommes a votre ecoute.",
+      title: "Nous sommes à votre écoute.",
       description:
-        "Que ce soit pour une assistance technique, une question sur les frais ou un suivi de transfert, nos equipes a Kinshasa et Bruxelles sont la pour vous aider.",
+        "Que ce soit pour une assistance technique, une question sur les frais ou un suivi de transfert, nos équipes à Kinshasa et Bruxelles sont là pour vous aider.",
       visual: {
         src: "https://images.unsplash.com/photo-1596524430615-b46475ddff6e?auto=format&fit=crop&q=80&w=1200",
-        alt: "Service client au telephone",
+        alt: "Service client au téléphone",
         eyebrow: "Assistance client",
         title: "Toujours disponibles",
-        description: "Nos conseillers sont la pour repondre a vos questions en temps reel.",
+        description: "Nos conseillers sont là pour répondre à vos questions en temps réel.",
+      },
+      methodsSection: {
+        eyebrow: "Canaux de contact",
+        title: "Choisissez le moyen le plus simple pour joindre CTI.",
+        description:
+          "Appelez, écrivez ou passez en agence selon votre besoin. Chaque canal garde le même objectif : vous orienter rapidement vers la bonne information.",
+      },
+      contactMethods: [
+        {
+          title: "Téléphone professionnel",
+          description:
+            "Pour une question urgente, un suivi de transfert ou une vérification avant le passage en agence.",
+          value: "+243 000 000 001",
+          href: "tel:+243000000001",
+          icon: "phone",
+        },
+        {
+          title: "Email CTI",
+          description:
+            "Envoyez les détails de votre demande afin que l'équipe puisse préparer une réponse claire.",
+          value: "contact@cti.example",
+          href: "mailto:contact@cti.example",
+          icon: "mail",
+        },
+        {
+          title: "Agences physiques",
+          description:
+            "Retrouvez une agence CTI pour confirmer les frais, les pièces et les informations du bénéficiaire.",
+          value: "Voir les agences",
+          href: "/agences",
+          icon: "map",
+        },
+      ],
+      officeHours: {
+        title: "Horaires et disponibilité",
+        description:
+          "Les horaires peuvent varier selon la ville et les jours fériés. L'agence confirme toujours les informations finales.",
+        rows: [
+          { label: "Kinshasa", value: "Lun - Sam, 08:30 - 17:30" },
+          { label: "Bruxelles", value: "Lun - Sam, 10:00 - 18:00" },
+          { label: "Support email", value: "Réponse selon disponibilité" },
+        ],
       },
       highlights: [
         {

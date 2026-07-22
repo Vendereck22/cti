@@ -6,8 +6,6 @@ import {
   Clock3,
   Laptop,
   LockKeyhole,
-  Mail,
-  Menu,
   MapPin,
   Package,
   Phone,
@@ -34,19 +32,11 @@ import {
   CardHeader,
   CardTitle,
   Separator,
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
 } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import { getPublicLandingContent } from "../services/public-landing.service";
 import type {
   LandingImageContent,
-  LandingHeaderContent,
   LandingIconName,
   PublicLandingContent,
   TrustProof,
@@ -63,6 +53,7 @@ import {
 } from "./landing-section";
 import { MobileExperienceSection } from "./mobile-experience-section";
 import { SocialLinks } from "./social-links";
+import { SiteHeader } from "./site-header";
 import { TransferMethodsSection } from "./transfer-methods-section";
 
 const icons: Record<LandingIconName, LucideIcon> = {
@@ -122,119 +113,6 @@ export function LandingPageShell({
       {children}
       <SiteFooter content={content} />
     </div>
-  );
-}
-
-function SiteHeader({ content }: { content: LandingHeaderContent }) {
-  return (
-    <header className="sticky top-0 z-50 border-b border-border bg-white/95 backdrop-blur">
-      <div className="border-b border-border bg-white text-primary">
-        <LandingContainer className="flex min-h-10 items-center justify-between gap-2 py-2 sm:gap-4">
-          <div className="flex min-w-0 items-center gap-2 text-[11px] font-medium text-primary sm:gap-4 sm:text-sm">
-            <a
-              href={`tel:${content.contactPhone.replace(/\s/g, "")}`}
-              className="inline-flex items-center gap-1.5 transition-colors hover:text-cti-blue sm:gap-2"
-            >
-              <Phone className="size-3.5" />
-              <span>{content.contactPhone}</span>
-            </a>
-            <span
-              className="h-3.5 w-px shrink-0 bg-border sm:h-4"
-              aria-hidden="true"
-            />
-            <a
-              href={`mailto:${content.contactEmail}`}
-              className="inline-flex min-w-0 items-center gap-1.5 transition-colors hover:text-cti-blue sm:gap-2"
-            >
-              <Mail className="size-3.5 shrink-0" />
-              <span className="max-w-[64px] truncate min-[390px]:max-w-[78px] sm:max-w-none">
-                {content.contactEmail}
-              </span>
-            </a>
-          </div>
-
-          <SocialLinks links={content.socialLinks} />
-        </LandingContainer>
-      </div>
-
-      <LandingContainer className="flex min-h-[76px] items-center justify-between gap-4 py-3">
-        <BrandLogo content={content} />
-
-        <div className="flex items-center gap-3">
-          <nav className="hidden items-center gap-7 lg:flex">
-            {content.navigation.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-sm font-semibold text-foreground transition-colors hover:text-cti-blue"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-
-          <MobileNavigation content={content} />
-        </div>
-      </LandingContainer>
-    </header>
-  );
-}
-
-function MobileNavigation({ content }: { content: LandingHeaderContent }) {
-  return (
-    <Sheet>
-      <SheetTrigger
-        aria-label={content.mobileMenuLabel}
-        className={cn(
-          buttonVariants({ size: "icon-lg", variant: "outline" }),
-          "rounded-lg border-border text-primary md:hidden",
-        )}
-      >
-        <Menu className="size-4" />
-      </SheetTrigger>
-      <SheetContent className="w-[86vw] max-w-sm border-border bg-background">
-        <SheetHeader className="border-b border-border p-5">
-          <SheetTitle>
-            <BrandLogo content={content} variant="sheet" href={null} />
-          </SheetTitle>
-          <SheetDescription className="sr-only">
-            {content.logoDescription}
-          </SheetDescription>
-        </SheetHeader>
-        <div className="grid gap-2 border-b border-border px-5 py-4 text-sm text-muted-foreground">
-          <a
-            href={`tel:${content.contactPhone.replace(/\s/g, "")}`}
-            className="inline-flex items-center gap-2 rounded-lg px-3 py-2 hover:bg-muted hover:text-foreground"
-          >
-            <Phone className="size-4 text-cti-blue" />
-            {content.contactPhone}
-          </a>
-          <a
-            href={`mailto:${content.contactEmail}`}
-            className="inline-flex min-w-0 items-center gap-2 rounded-lg px-3 py-2 hover:bg-muted hover:text-foreground"
-          >
-            <Mail className="size-4 shrink-0 text-cti-blue" />
-            <span className="truncate">{content.contactEmail}</span>
-          </a>
-        </div>
-        <nav className="grid gap-1 px-5 py-3">
-          {content.navigation.map((item) => (
-            <SheetClose
-              key={item.href}
-              nativeButton={false}
-              render={
-                <Link
-                  href={item.href}
-                  className="rounded-lg px-3 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted"
-                />
-              }
-            >
-              {item.label}
-            </SheetClose>
-          ))}
-        </nav>
-      </SheetContent>
-    </Sheet>
   );
 }
 

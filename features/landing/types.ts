@@ -77,7 +77,7 @@ export interface CountryOption {
   code: string;
   label: string;
   flag: string;
-  description: string;
+  description?: string;
 }
 
 export interface DestinationOption {
@@ -327,6 +327,34 @@ export interface PublicInfoPageContent extends LandingSectionContent {
   secondaryCta?: LandingLink;
 }
 
+export type ContactMethodIconName =
+  | "agency"
+  | "clock"
+  | "mail"
+  | "map"
+  | "phone"
+  | "search"
+  | "shield";
+
+export interface ContactPageContent extends PublicInfoPageContent {
+  methodsSection: LandingSectionContent;
+  contactMethods: {
+    title: string;
+    description: string;
+    value: string;
+    href: string;
+    icon: ContactMethodIconName;
+  }[];
+  officeHours: {
+    title: string;
+    description: string;
+    rows: {
+      label: string;
+      value: string;
+    }[];
+  };
+}
+
 export interface PublicLandingContent {
   seo: LandingSeoContent;
   header: LandingHeaderContent;
@@ -356,6 +384,6 @@ export interface PublicLandingContent {
   footer: FooterContent;
   publicPages: {
     about: PublicInfoPageContent;
-    contact: PublicInfoPageContent;
+    contact: ContactPageContent;
   };
 }
