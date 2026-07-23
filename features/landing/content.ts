@@ -357,6 +357,22 @@ export const landingContent = {
       },
     ],
     primaryCta: { label: "Télécharger l'application", href: "/contacts" },
+    storeBadges: [
+      {
+        label: "Télécharger sur Google Play",
+        href: "#",
+        imageSrc:
+          "https://www.westernunion.com/staticassets/media/google-play-badge-ai.svg",
+        imageAlt: "Disponible sur Google Play",
+      },
+      {
+        label: "Télécharger dans l'App Store",
+        href: "#",
+        imageSrc:
+          "https://www.westernunion.com/staticassets/media/AppStore-EN-aligned.svg",
+        imageAlt: "Télécharger dans l'App Store",
+      },
+    ],
     note: "Visuel illustratif de l'expérience mobile CTI.",
   },
   whyChoose: {

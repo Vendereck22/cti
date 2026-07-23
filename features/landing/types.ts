@@ -210,6 +210,12 @@ export interface MobileExperienceContent extends LandingSectionContent {
     icon: MobileExperienceIconName;
   }[];
   primaryCta: LandingLink;
+  storeBadges: {
+    label: string;
+    href: string;
+    imageSrc: string;
+    imageAlt: string;
+  }[];
   note: string;
 }
 

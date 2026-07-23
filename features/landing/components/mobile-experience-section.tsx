@@ -81,6 +81,31 @@ export function MobileExperienceSection({
                   {content.note}
                 </p>
               </div>
+
+              <div className="mt-6 flex flex-wrap items-center gap-3">
+                {content.storeBadges.map((badge) => (
+                  <Link
+                    key={badge.label}
+                    href={badge.href}
+                    aria-label={badge.label}
+                    className={cn(
+                      "inline-flex h-12 items-center overflow-hidden rounded-lg shadow-lg shadow-primary/15 transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-primary/40",
+                      badge.imageSrc.includes("AppStore")
+                        ? "w-36"
+                        : "w-[162px]"
+                    )}
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element -- These external SVG badges render blank through next/image. */}
+                    <img
+                      src={badge.imageSrc}
+                      alt={badge.imageAlt}
+                      width={168}
+                      height={50}
+                      className="h-12 w-auto max-w-none object-contain"
+                    />
+                  </Link>
+                ))}
+              </div>
             </div>
           </LandingReveal>
         </div>
